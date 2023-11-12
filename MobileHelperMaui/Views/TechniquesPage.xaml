@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.TechniquesPage"
+             xmlns:local="clr-namespace:MobileHelperMaui" 
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.TechniqueViewModels"
+             Title="Главная">
+
+    <ContentPage.BindingContext>
+        <vm:TechniquesViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Профиль" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Margin="5, 0, 5, 5">
+        <StackLayout Padding="10" Margin="0, 0, 0, 5" Orientation="Horizontal">
+            <Label
+            Text="Мои техники"
+            FontSize="19"
+            HorizontalOptions="StartAndExpand"
+            VerticalOptions="Center"
+            TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+            <Button 
+            Text="Создать"
+            FontSize="13"
+            FontAttributes="Bold"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark=white}"
+            TextColor="{AppThemeBinding Light=white, Dark=black}"
+            CornerRadius="25"
+            WidthRequest="150"
+            HorizontalOptions="End"
+            VerticalOptions="Center"
+            Command="{Binding ConstructorTapped}"
+            HeightRequest="40"/>
+        </StackLayout>
+
+        <ListView
+        HasUnevenRows="True"
+        SeparatorVisibility="None"
+        ItemsSource="{Binding Techniques}"
+        SelectionMode="None"
+        VerticalScrollBarVisibility="Never"
+        HorizontalScrollBarVisibility="Never">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Border
+                                Padding="10"
+                                IsVisible="{Binding Active}">
+
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label 
+                                        Text="{Binding Number}"
+                                        Margin="5, 0, 0, 0"
+                                        FontSize="14"
+                                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                        HorizontalOptions="Start"
+                                        />
+
+                                        <Label 
+                                        Text="{Binding Date}"
+                                        Margin="0, 0, 5, 0"
+                                        FontSize="15"
+                                        HorizontalOptions="EndAndExpand"
+                                        TextColor="{AppThemeBinding Light={StaticResource Gray}, Dark=white}"/>
+                                    </StackLayout>
+
+                                    <StackLayout Margin="5" Orientation="Horizontal">
+                                        <Image 
+                                        WidthRequest="85"
+                                        HeightRequest="85"
+                                        Source="{Binding Image}"
+                                        />
+
+                                        <StackLayout Margin="5, 0, 0, 0">
+                                            <Label 
+                                            Text="{Binding Title}"
+                                            FontSize="18"
+                                            FontAttributes="Bold"
+                                            TextColor="{AppThemeBinding Light={StaticResource Gray}, Dark=white}"
+                                            />
+                                            <Label
+       
+                                            WidthRequest="250"
+                                            Text="{Binding Subtitle}"
+                                            Margin="0, 5, 0, 0"
+                                            FontSize="15"
+                                            MaxLines="3"
+                                            TextColor="{AppThemeBinding Light={StaticResource Gray}, Dark=white}"/>
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <StackLayout Margin="0" Orientation="Horizontal">
+                                        <Label 
+                                        Text="{Binding Theme}"
+                                        Margin="5, 0, 0, 0"
+                                        FontSize="15"
+                                        TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark=white}"
+                                        HorizontalOptions="Start"
+                                        />
+
+                                        <Label 
+                                        Text="{Binding Author}"
+                                        Margin="0, 0, 5, 0"
+                                        FontSize="14"
+                                        HorizontalOptions="EndAndExpand"
+                                        TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"/>
+                                </Border.GestureRecognizers>
+
+                                <Border.Shadow>
+                                    <Shadow 
+                                    Opacity="0.65"
+                                    Brush="Black"
+                                    Offset="0, 0"
+                                    Radius="20"/>
+                                </Border.Shadow>
+
+                            </Border>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </StackLayout>
+</ContentPage>

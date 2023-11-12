@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.CleanPages.MusicPlayerPage" 
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.CleanViewModels"
+             Title="Очиститель">
+    
+    <ContentPage.BindingContext>
+        <vm:MusicPlayerViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <StackLayout Margin="10">
+            <Frame Margin="5, 5, 5, 5" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                <StackLayout>
+                    <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Поиск" FontSize="15"/>
+                    <Entry
+                    PlaceholderColor="{StaticResource Accent}"
+                    Placeholder="Название"
+                    FontSize="15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                    VerticalTextAlignment="Center"/>
+                </StackLayout>
+
+            </Frame>
+
+            <ListView
+            x:Name="Musics"
+            ItemTapped="ListView_ItemTapped"
+            VerticalScrollBarVisibility="Never"
+            HorizontalScrollBarVisibility="Never"
+            SeparatorVisibility="None"
+            SelectionMode="None"
+            HasUnevenRows="True"
+            RowHeight="150"
+            ItemsSource="{Binding SelectedItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Border Padding="10">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image
+                                        Margin="0, 0, 5, 0"
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        Source="music.png"/>
+                                        <StackLayout>
+                                            <Label 
+                                            TextColor="Black"
+                                            FontSize="18"
+                                            Text="{Binding Name}"/>
+                                            <Label 
+                                            TextColor="{StaticResource Gray}"
+                                            FontSize="16"
+                                            Text="{Binding Description}"/>
+                                        </StackLayout>
+
+                                        <ActivityIndicator 
+                                        IsVisible="{Binding Loading}"
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        Color="{StaticResource Primary}"
+                                        IsRunning="True"/>
+                                    </StackLayout>
+                                    
+                                    <Border.Shadow>
+                                        <Shadow 
+                                        Opacity="0.65"
+                                        Brush="Black"
+                                        Offset="0, 0"
+                                        Radius="20"/>
+                                    </Border.Shadow>
+                                </Border>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout>
+
+                <StackLayout Margin="15, 0, 10, 0" Orientation="Horizontal">
+                    <Image 
+                    WidthRequest="35"
+                    HeightRequest="35"
+                    Source="icon_about.png"/>
+                    <Label 
+                    Text="Подробнее"
+                    FontSize="18"
+                    TextColor="Black"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+                </StackLayout>
+
+                <Border Margin="15, 15, 15, 15">
+                    <StackLayout Margin="5">
+
+                        <Label
+                        Margin="5, 0, 5, 15"
+                        Text="Это сборник сильных молитв, который поможет вам очиститься от негатива. Нужен хороший интернет."
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+                </Border>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

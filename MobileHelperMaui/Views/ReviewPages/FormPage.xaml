@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.ReviewPages.FormPage"
+             xmlns:reviewviewmodels="clr-namespace:MobileHelper.ViewModels.ReviewViewModels" 
+             Title="Отзовик">
+    
+    <ContentPage.BindingContext>
+        <reviewviewmodels:FormViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="0">
+            <Border Margin="15, 15, 15, 15">
+                <StackLayout Margin="5">
+                    <Label
+                    Text="Пояснение"
+                    FontSize="18"
+                    Margin="10, 5, 5, 15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                    <Label
+                    Margin="15, 0, 0, 15"
+                    Text="Вы можете сообщить о проблеме или предложить свои идеи о том, как сделать приложение ещё лучше. Служба поддержки получит ваше сообщение."
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                    FontSize="16"/>
+
+                </StackLayout>
+
+                <Border.Shadow>
+                    <Shadow 
+                    Opacity="0.65"
+                    Brush="Black"
+                    Offset="0, 0"
+                    Radius="20"/>
+                </Border.Shadow>
+
+            </Border>
+
+            <Border Margin="15, 10, 15, 15">
+                <StackLayout>
+                    <Label
+                    Text="Форма"
+                    FontSize="18"
+                    Margin="15, 10, 5, 15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                    <Frame BackgroundColor="{AppThemeBinding Light=white, Dark=#444444}" Margin="15, 5, 15, 5" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                        <StackLayout>
+                            <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Сообщение" FontSize="15"/>
+                            <Entry
+                                MaxLength="20"
+                                PlaceholderColor="{StaticResource Accent}"
+                                Placeholder="Приложение вылетает на странице X"
+                                FontSize="15"
+                                Text="{Binding MessageText}"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                VerticalTextAlignment="Center"/>
+                        </StackLayout>
+
+                    </Frame>
+
+                    <Button 
+                        Margin="10, 15, 10, 20"
+                        Text="Отправить"
+                        FontSize="12"
+                        TextColor="White"
+                        BackgroundColor="{StaticResource Accent}"
+                        CornerRadius="25"
+                        WidthRequest="350"
+                        HeightRequest="35"
+                        Command="{Binding Send}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                </StackLayout>
+
+                <Border.Shadow>
+                    <Shadow 
+                    Opacity="0.65"
+                    Brush="Black"
+                    Offset="0, 0"
+                    Radius="20"/>
+                </Border.Shadow>
+
+            </Border>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

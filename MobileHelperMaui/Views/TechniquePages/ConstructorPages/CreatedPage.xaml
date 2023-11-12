@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.TechniquePages.ConstructorPages.CreatedPage"
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.ConstructorViewModels"
+             Title="Техника">
+
+    <ContentPage.BindingContext>
+        <vm:CreatedViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Изменить" Command="{Binding Edit}" />
+        <ToolbarItem Text="Удалить" Command="{Binding Remove}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Margin="0">
+            <Border MinimumHeightRequest="500" Margin="15, 15, 15, 15">
+                <StackLayout Margin="5">
+                    <Label
+                    Text="Алгоритм"
+                    FontSize="18"
+                    Margin="10, 5, 5, 15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                    <ListView 
+                    Margin="0, 0, 0, 5"
+                    ItemsSource="{Binding Elements}"
+                    SeparatorVisibility="None"
+                    SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label 
+                                    Margin="15, 0, 0, 10"
+                                    Text="{Binding Text}"
+                                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                    FontSize="16"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <Border.Shadow>
+                    <Shadow 
+                    Opacity="0.65"
+                    Brush="Black"
+                    Offset="0, 0"
+                    Radius="20"/>
+                </Border.Shadow>
+
+            </Border>
+
+            <Button 
+                Margin="10, 15, 10, 15"
+                Text="Завершить"
+                FontSize="15"
+                TextColor="White"
+                BackgroundColor="{StaticResource Primary}"
+                CornerRadius="25"
+                WidthRequest="375"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Command="{Binding Finish}"
+                HeightRequest="40"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

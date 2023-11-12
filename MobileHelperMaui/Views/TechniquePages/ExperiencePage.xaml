@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.TechniquePages.ExperiencePage"
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.TechniqueViewModels"
+             Title="Техника">
+    
+    <ContentPage.BindingContext>
+        <vm:ExperienceViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Теория" Command="{Binding Theory}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Margin="0">
+                <Border Margin="15, 15, 15, 15">
+                    <StackLayout Margin="5">
+                        <Label
+                        Text="Алгоритм"
+                        FontSize="18"
+                        Margin="10, 5, 5, 15"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                        <Label 
+                        Margin="15, 0, 0, 10"
+                        Text="1. Выберите опыт для проработки"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                        <Label 
+                        Margin="15, 0, 5, 10"
+                        Text="2. Где вы находитесь в этом опыте?"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                        <Label 
+                        Margin="15, 0, 0, 10"
+                        Text="3. Когда это происходит?"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                        <Label 
+                        Margin="15, 0, 0, 10"
+                        Text="4. Кто важные участники этого события?"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                        <Label 
+                        Margin="15, 0, 0, 10"
+                        Text="5. Кратко опишите этот опыт"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                        <Label 
+                        Margin="15, 0, 0, 10"
+                        Text="6. Оцените этот опыт по шкале от -10 до 10"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                        <Label 
+                        Margin="15, 0, 0, 10"
+                        Text="7. Какая часть этот опыта была самой нежелательной для вас?"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                        <Label 
+                        Margin="15, 0, 0, 10"
+                        Text="8. Что должно происходить иначе в этом опыте, чтобы он был более приемлемым для вас?"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                        <Label 
+                        Margin="15, 0, 0, 10"
+                        Text="9. Оцените новый опыт по шкале от -10 до 10"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                        <Label 
+                        Margin="15, 0, 0, 10"
+                        Text="10. Если новый опыт оценен меньше, чем на 10, перейдите опять на шаг 7. Повторяйте шаги 7-10 до тех пор, пока новый опыт не станет идеальным (с оценкой 10 из 10)"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="16"/>
+
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+
+                </Border>
+
+                <Button 
+                    Margin="10, 15, 10, 15"
+                    Text="Завершить"
+                    FontSize="15"
+                    BackgroundColor="{StaticResource Primary}"
+                    CornerRadius="25"
+                    WidthRequest="375"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Command="{Binding Finish}"
+                    HeightRequest="40"/>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

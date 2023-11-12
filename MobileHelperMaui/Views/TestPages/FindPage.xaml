@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.TestPages.FindPage"
+             xmlns:local="clr-namespace:MobileHelperMaui" 
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.TestViewModels"
+             Title="Детектор">
+
+    <ContentPage.BindingContext>
+        <vm:FindViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0">
+                <Border Margin="15, 15, 15, 15">
+                    <StackLayout Margin="5">
+                        <Label
+                    Text="Описание"
+                    FontSize="18"
+                    Margin="10, 5, 5, 15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                        <Label
+                    Margin="15, 0, 0, 15"
+                    Text="Тест поможет вам за пару кликов выявить то, что беспокоит, но остаётся неявным. Просто выберите две цветные карточки."
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                    FontSize="16"/>
+
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+
+                </Border>
+
+                <Border Margin="15, 10, 15, 15">
+                    <StackLayout Margin="5">
+                        <Label
+                    Text="Алгоритм"
+                    FontSize="18"
+                    Margin="10, 5, 5, 15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                        <Label 
+                    Margin="15, 0, 0, 10"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                    FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="1. Выбрать самый "/>
+                                    <Span FontAttributes="Bold" Text="приятный "/>
+                                    <Span Text="цвет."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label 
+                    Margin="15, 0, 0, 10"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                    FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="2. Выбрать самый "/>
+                                    <Span FontAttributes="Bold" Text="не приятный "/>
+                                    <Span Text="цвет."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+
+                </Border>
+
+                <Border Margin="15, 10, 15, 15">
+                    <StackLayout Margin="5">
+                        <Label
+                    Text="Замечание"
+                    FontSize="18"
+                    Margin="10, 5, 5, 15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                        <Label
+                    Margin="15, 0, 0, 15"
+                    Text="Нельзя выбирать любимые цвета. Тест измеряет ваше эмоциональное состояние на сейчас."
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                    FontSize="16"/>
+
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+
+                </Border>
+
+                <Button 
+                Margin="10, 15, 10, 15"
+                Text="Начать"
+                FontSize="15"
+                BackgroundColor="{StaticResource Primary}"
+                CornerRadius="25"
+                WidthRequest="375"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Command="{Binding Continue}"
+                HeightRequest="40"/>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

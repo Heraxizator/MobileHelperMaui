@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.TechniquePages.PolarityPage"
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.TechniqueViewModels"
+             Title="Техника">
+    
+    <ContentPage.BindingContext>
+        <vm:PolarityViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Теория" Command="{Binding Theory}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+            <StackLayout Margin="0">
+                <Border Margin="15, 15, 15, 15">
+                    <StackLayout Margin="5">
+                        <Label
+                    Text="Алгоритм"
+                    FontSize="18"
+                    Margin="10, 5, 5, 15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                        <Label 
+                    Margin="15, 0, 0, 10"
+                    Text="1. Найти то, что важно"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                    FontSize="16"/>
+
+                        <Label 
+                    Margin="15, 0, 5, 10"
+                    Text="2. Найти то, что противоположно"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                    FontSize="16"/>
+
+                        <Label 
+                    Margin="15, 0, 0, 15"
+                    Text="3. Повторить п.1 и п.2 много раз"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"
+                    FontSize="16"/>
+
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+
+                </Border>
+
+                <Border Margin="15, 10, 15, 15">
+                    <StackLayout Margin="10, 0, 10, 5">
+                        <Label
+                    Text="Форма"
+                    FontSize="18"
+                    Margin="5, 10, 5, 15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                        <Frame BackgroundColor="{AppThemeBinding Light=white, Dark=#444444}" Margin="5, 5, 5, 5" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                            <StackLayout>
+                                <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Первая полярность" FontSize="15"/>
+                                <Entry
+                                MaxLength="20"
+                                PlaceholderColor="{StaticResource Accent}"
+                                Placeholder="Невроз"
+                                FontSize="15"
+                                Text="{Binding Positive}"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                VerticalTextAlignment="Center"/>
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Frame BackgroundColor="{AppThemeBinding Light=white, Dark=#444444}" Margin="5, 5, 5, 5" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                            <StackLayout>
+                                <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Вторая полярность" FontSize="15"/>
+                                <Entry
+                                MaxLength="20"
+                                PlaceholderColor="{StaticResource Accent}"
+                                Placeholder="Покой"
+                                Text="{Binding Negative}"
+                                FontSize="15"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                VerticalTextAlignment="Center"/>
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Button 
+                        Margin="10, 15, 10, 20"
+                        Text="Добавить"
+                        FontSize="12"
+                        TextColor="White"
+                        BackgroundColor="{StaticResource Accent}"
+                        CornerRadius="25"
+                        WidthRequest="350"
+                        HeightRequest="40"
+                        Clicked="Button_Clicked"
+                        Command="{Binding Add}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+
+                </Border>
+
+                <ListView
+                x:Name="Polarities"
+                IsVisible="{Binding IsFull}"
+                Margin="0, 0, 0, 5"
+                RowHeight="120"
+                HeightRequest="120"
+                SeparatorVisibility="None"
+                SelectionMode="None"
+                ItemsSource="{Binding polarities}"
+                VerticalScrollBarVisibility="Never"
+                HorizontalScrollBarVisibility="Never"
+        >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+
+                                    <Border Padding="10">
+
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label 
+                                               Text="{Binding Id}"
+                                               Margin="5, 0, 0, 0"
+                                               FontSize="14"
+                                               TextColor="Black"
+                                               HorizontalOptions="Start" />
+
+                                                <ImageButton 
+                                                Source="close.png"
+                                                Opacity="0.6"
+                                                WidthRequest="15"
+                                                HeightRequest="15"
+                                                Margin="0, 0, 5, 0"
+                                                BackgroundColor="Transparent"
+                                                Clicked="ImageButton_Clicked"
+                                                HorizontalOptions="EndAndExpand"/>
+
+                                            </StackLayout>
+
+                                            <StackLayout
+                                            Margin="0, 10, 0, 0"
+                                            Orientation="Horizontal">
+                                                <Label 
+                                                Margin="20, 0, 0, 0"
+                                                WidthRequest="150"
+                                                Text="{Binding Positive}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                FontSize="19"/>
+                                                <Image 
+                                                Source="minus.png"
+                                                Opacity="0.6"
+                                                WidthRequest="40"
+                                                HeightRequest="40"
+                                                HorizontalOptions="CenterAndExpand"
+                                                />
+                                                <Label 
+                                                Margin="0, 0, 20, 0"
+                                                Text="{Binding Negative}"
+                                                WidthRequest="150"
+                                                HorizontalTextAlignment="End"
+                                                TextColor="Black"
+                                                FontSize="19"/>
+
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <Border.Shadow>
+                                            <Shadow 
+                                            Opacity="0.65"
+                                            Brush="Black"
+                                            Offset="0, 0"
+                                            Radius="20"/>
+                                        </Border.Shadow>
+                                        
+                                    </Border>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+                <Button 
+                Margin="10, 15, 10, 5"
+                Text="Завершить"
+                FontSize="15"
+                BackgroundColor="{StaticResource Primary}"
+                CornerRadius="25"
+                WidthRequest="375"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Command="{Binding Finish}"
+                HeightRequest="40"/>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

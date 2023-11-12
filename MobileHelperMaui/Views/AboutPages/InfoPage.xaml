@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.AboutPages.InfoPage"
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.AboutViewModels"
+             Title="О приложении">
+
+    <ContentPage.BindingContext>
+        <vm:InfoViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Frame CornerRadius="25" WidthRequest="400" HeightRequest="800" Margin="5, 10, 5, 5">
+            <StackLayout Margin="5, 0, 5, 5">
+                <Label
+                Text="О приложении"
+                FontSize="19"
+                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                Margin="0, 5, 0, 10"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"/>
+
+                <Label
+                Text="Приложение представляет собой список простых, но в тоже время мощных техник, которые помогут вам справиться с такими проблемами, как стресс, страх, сомнения, навязчивые мысли, ограничивающие убеждения и деструктивные установки. Все методики являются общеизвестными и проверены временем. Некоторые взяты из НЛП или трудов Живорада Славинского. Эти инструменты позволят вам сэкономить много времени, сил и денег. Они не потребуют глубоких знаний в области психологии и программирования подсознания. Желаем успеха в проработках!"
+                FontSize="18"
+                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                Margin="10, 10, 10, 10"/>
+
+            </StackLayout>
+
+        </Frame>
+    </StackLayout>
+    
+</ContentPage>

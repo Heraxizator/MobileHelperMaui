@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.TestPages.TestPage"
+             xmlns:local="clr-namespace:MobileHelperMaui" 
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.TestViewModels"
+             Title="Детектор">
+
+    <ContentPage.BindingContext>
+        <vm:TestViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <StackLayout IsVisible="{Binding IsStart}">
+                    <StackLayout Margin="15, 25, 15, 0">
+
+                        <Label
+                        HorizontalTextAlignment="Center"
+                        Margin="15, 0, 0, 0"
+                        Text="{Binding CurrentInstruction}"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                        FontSize="18"/>
+
+                    </StackLayout>
+
+                    <StackLayout Margin="0, 5, 0, 15">
+
+                        <BoxView 
+                        Margin="30, 0, 30, 5"
+                        HeightRequest="3"
+                        Color="{StaticResource Primary}"/>
+
+                        <FlexLayout JustifyContent="Center">
+
+                            <BoxView 
+                            IsVisible="{Binding IsRed}"
+                            Margin="10"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            CornerRadius="15"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Color="Red"
+                            Opacity="0.9">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding RedHandler}"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                            <BoxView
+                            IsVisible="{Binding IsBrown}"
+                            Margin="10"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            CornerRadius="15"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Color="Orange"
+                            Opacity="0.9">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BrownHandler}"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                            <BoxView 
+                            IsVisible="{Binding IsYellow}"
+                            Margin="10"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            CornerRadius="15"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Color="Yellow"
+                            Opacity="0.9">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding YellowHandler}"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                        </FlexLayout>
+
+                        <FlexLayout Margin="10, 0, 10, 0" JustifyContent="Center">
+
+                            <BoxView 
+                            IsVisible="{Binding IsGreen}"
+                            Margin="10"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            CornerRadius="15"
+                            Color="Green"
+                            Opacity="0.9">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GreenHandler}"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                            <BoxView 
+                            IsVisible="{Binding IsBlue}"
+                            Margin="10"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            CornerRadius="15"
+                            Grid.Column="2"
+                            Grid.Row="0"
+                            Color="Blue"
+                            Opacity="0.9">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BlueHandler}"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                            <BoxView
+                            IsVisible="{Binding IsPurple}"
+                            Margin="10"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            CornerRadius="15"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Color="Purple"
+                            Opacity="0.9">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PurpleHandler}"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                        </FlexLayout>
+
+                        <FlexLayout JustifyContent="Center">
+
+                            <BoxView 
+                            IsVisible="{Binding IsGray}"
+                            Margin="10"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            CornerRadius="15"
+                            Color="Gray"
+                            Opacity="0.9">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GrayHandler}"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                            <BoxView
+                            IsVisible="{Binding IsBlack}"
+                            Margin="10"
+                            WidthRequest="100"
+                            HeightRequest="100"
+                            CornerRadius="15"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Color="Black"
+                            Opacity="0.9">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BlackHandler}"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                        </FlexLayout>
+
+                        <BoxView 
+                            Margin="30, 10, 30, 0"
+                            HeightRequest="3"
+                            Color="{StaticResource Primary}"/>
+
+                    </StackLayout>
+
+                    <StackLayout>
+
+                        <StackLayout Margin="15, 0, 10, 0" Orientation="Horizontal">
+                            <Image 
+                            WidthRequest="35"
+                            HeightRequest="35"
+                            Source="icon_about.png"/>
+                            <Label 
+                            Text="Подробнее"
+                            FontSize="18"
+                            TextColor="Black"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                        </StackLayout>
+
+                        <Border Margin="15, 10, 15, 15">
+                            <StackLayout Margin="5">
+
+                                <Label
+                                Margin="5, 0, 5, 15"
+                                Text="Это альтернативная версия теста Люшера. Она менее точная, но более простая, быстрая и лёгкая. Всё делается буквально в два клика."
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                FontSize="16"/>
+
+                            </StackLayout>
+
+                            <Border.Shadow>
+                                <Shadow 
+                                Opacity="0.65"
+                                Brush="Black"
+                                Offset="0, 0"
+                                Radius="20"/>
+                            </Border.Shadow>
+
+                        </Border>
+
+                    </StackLayout>
+
+
+                </StackLayout>
+
+                <StackLayout 
+                    IsVisible="{Binding IsFinish}">
+
+                    <StackLayout Margin="5, 0, 5, 0">
+
+                        <Label
+                        Text="Первый цвет"
+                        FontSize="19"
+                        Margin="10, 15, 5, 5"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource Gray}"/>
+
+                        <BoxView 
+                        Margin="20, 10, 20, 10"
+                        HeightRequest="3"
+                        Color="{StaticResource Gray}"/>
+
+                        <StackLayout>
+                            <BoxView 
+                            Margin="10, 10, 10, 5"
+                            WidthRequest="200"
+                            HeightRequest="200"
+                            HorizontalOptions="Center"
+                            CornerRadius="30"
+                            Color="{Binding FirstColor}"
+                            Opacity="0.9"/>
+
+                            <Label 
+                            Text="{Binding FirstName}"
+                            FontSize="18"
+                            TextColor="Black"
+                            HorizontalOptions="Center"/>
+                        </StackLayout>
+
+                        <BoxView 
+                        Margin="20, 10, 20, 0"
+                        HeightRequest="3"
+                        Color="{StaticResource Gray}"/>
+
+                        <Border Margin="15, 15, 15, 5">
+                            <StackLayout Margin="5">
+
+                                <Label
+                                Margin="5, 0, 0, 5"
+                                Text="{Binding FirstResult}"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                FontSize="16"/>
+
+                            </StackLayout>
+
+                            <Border.Shadow>
+                                <Shadow 
+                                Opacity="0.65"
+                                Brush="Black"
+                                Offset="0, 0"
+                                Radius="20"/>
+                            </Border.Shadow>
+
+                        </Border>
+
+                        <Label
+                        Text="Второй цвет"
+                        FontSize="19"
+                        Margin="10, 10, 5, 5"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource Gray}"/>
+
+                        <BoxView 
+                        Margin="20, 10, 20, 10"
+                        HeightRequest="3"
+                        Color="{StaticResource Gray}"/>
+
+                        <StackLayout>
+                            <BoxView 
+                            Margin="10, 10, 10, 5"
+                            WidthRequest="200"
+                            HeightRequest="200"
+                            HorizontalOptions="Center"
+                            CornerRadius="30"
+                            Color="{Binding SecondColor}"
+                            Opacity="0.9"/>
+
+                            <Label 
+                            Text="{Binding SecondName}"
+                            FontSize="18"
+                            TextColor="Black"
+                            HorizontalOptions="Center"/>
+                        </StackLayout>
+
+                        <BoxView 
+                        Margin="20, 10, 20, 0"
+                        HeightRequest="3"
+                        Color="{StaticResource Gray}"/>
+
+                        <Border Margin="15, 15, 15, 5">
+                            <StackLayout Margin="5">
+
+                                <Label
+                                Margin="5, 0, 0, 5"
+                                Text="{Binding SecondResult}"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                FontSize="16"/>
+                            </StackLayout>
+
+                            <Border.Shadow>
+                                <Shadow 
+                                Opacity="0.65"
+                                Brush="Black"
+                                Offset="0, 0"
+                                Radius="20"/>
+                            </Border.Shadow>
+
+                        </Border>
+
+                        <Button 
+                        Margin="10, 20, 10, 15"
+                        Text="Заново"
+                        FontSize="15"
+                        BackgroundColor="{StaticResource Gray}"
+                        CornerRadius="25"
+                        WidthRequest="375"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Command="{Binding Restart}"
+                        HeightRequest="40"/>
+                    </StackLayout>
+
+                </StackLayout>
+
+
+
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

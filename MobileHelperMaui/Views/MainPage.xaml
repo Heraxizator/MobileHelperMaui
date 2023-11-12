@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+     x:Class="MobileHelperMaui.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MobileHelperMaui.Views"
+    xmlns:tests="clr-namespace:MobileHelperMaui.Views.TestPages"
+    xmlns:physics="clr-namespace:MobileHelperMaui.Views.PhysicsPages"
+    xmlns:cleans="clr-namespace:MobileHelperMaui.Views.CleanPages"
+    xmlns:forms="clr-namespace:MobileHelperMaui.Views.ReviewPages"
+    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+    Shell.ForegroundColor="Black">
+
+    <Shell.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent"/>
+    </Shell.Behaviors>
+
+    <TabBar>
+        <Tab Title="Практик"
+        Icon="technique.png">
+            <ShellContent ContentTemplate="{DataTemplate views:TechniquesPage}" />
+        </Tab>
+
+        <Tab Title="Детектор"
+        Icon="technique.png">
+            <ShellContent ContentTemplate="{DataTemplate tests:FindPage}" />
+        </Tab>
+
+        <Tab Title="Соматик"
+        Icon="technique.png">
+            <ShellContent ContentTemplate="{DataTemplate physics:StartPhysicsPage}" />
+        </Tab>
+
+        <Tab Title="Очиститель"
+        Icon="technique.png">
+            <ShellContent ContentTemplate="{DataTemplate cleans:MusicPlayerPage}"/>
+        </Tab>
+
+        <Tab Title="Отзовик"
+        Icon="technique.png">
+            <ShellContent ContentTemplate="{DataTemplate forms:FormPage}"/>
+        </Tab>
+
+    </TabBar>
+</Shell>

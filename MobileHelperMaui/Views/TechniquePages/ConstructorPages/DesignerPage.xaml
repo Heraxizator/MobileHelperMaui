@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.TechniquePages.ConstructorPages.DesignerPage"
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.ConstructorViewModels"
+             Title="Техника">
+    
+    <ContentPage.BindingContext>
+        <vm:DesignerViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView Margin="0, 0, 0, 0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+            <StackLayout Margin="0">
+                <Border Margin="15, 15, 15, 15">
+                    <StackLayout Margin="5">
+                        <Label
+                    Text="Описание"
+                    FontSize="18"
+                    Margin="10, 5, 5, 15"
+                    TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                        <Frame BackgroundColor="{AppThemeBinding Light=white, Dark=#444444}" Margin="5, 5, 5, 5" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                            <StackLayout>
+                                <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Название" FontSize="15"/>
+                                <Entry
+                                PlaceholderColor="{StaticResource Accent}"
+                                Placeholder="Крутилка Славинского"
+                                FontSize="15"
+                                Text="{Binding Name}"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                VerticalTextAlignment="Center"/>
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Frame BackgroundColor="{AppThemeBinding Light=white, Dark=#444444}" Margin="5, 5, 5, 5" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                            <StackLayout>
+                                <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Описание" FontSize="15"/>
+                                <Entry
+                                PlaceholderColor="{StaticResource Accent}"
+                                Placeholder="Метод мгновенной нейтрализации..."
+                                FontSize="15"
+                                Text="{Binding Description}"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                VerticalTextAlignment="Center"/>
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Frame BackgroundColor="{AppThemeBinding Light=white, Dark=#444444}" Margin="5, 5, 5, 5" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                            <StackLayout>
+                                <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Тема" FontSize="15"/>
+                                <Entry
+                                PlaceholderColor="{StaticResource Accent}"
+                                Placeholder="Эпизоды"
+                                FontSize="15"
+                                Text="{Binding Theme}"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                VerticalTextAlignment="Center"/>
+                            </StackLayout>
+
+                        </Frame>
+
+                        <Frame BackgroundColor="{AppThemeBinding Light=white, Dark=#444444}" Margin="5, 5, 5, 15" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                            <StackLayout>
+                                <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Автор" FontSize="15"/>
+                                <Entry
+                                PlaceholderColor="{StaticResource Accent}"
+                                Placeholder="Живорад Славинский"
+                                FontSize="15"
+                                Text="{Binding Author}"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                VerticalTextAlignment="Center"/>
+                            </StackLayout>
+
+                        </Frame>
+
+
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+
+                </Border>
+
+                <Border Margin="15, 10, 15, 15">
+                    <StackLayout>
+                        <Label
+                        Text="Алгоритм"
+                        FontSize="18"
+                        Margin="10, 5, 5, 15"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+                        <Frame BackgroundColor="{AppThemeBinding Light=white, Dark=#444444}" Margin="10, 5, 10, 15" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                            <StackLayout>
+                                <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Список действий" FontSize="15"/>
+
+                                <Editor 
+                                HeightRequest="160"
+                                TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                Text="{Binding Algorithm}"
+                                MaxLength="300"/>
+
+
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+
+                </Border>
+
+                <Border Margin="15, 10, 15, 15">
+                    <StackLayout>
+                        <Label
+                        Text="Изображение"
+                        FontSize="18"
+                        Margin="10, 5, 5, 20"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"/>
+
+
+                        <Image   
+                        WidthRequest="150"
+                        HeightRequest="150"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Source="{Binding Path}"/>
+
+                        <!--
+                    <Label 
+                        Text="Нет фото"
+                        TextColor="{AppThemeBinding Light=gray, Dark=white}"
+                        FontSize="17"
+                        Padding="40"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+                    -->
+
+                        <Button 
+                        Margin="10, 20, 10, 5"
+                        Text="Галерея"
+                        FontSize="12"
+                        TextColor="White"
+                        Command="{Binding OpenGallery}"
+                        BackgroundColor="{StaticResource Accent}"
+                        CornerRadius="25"
+                        WidthRequest="350"
+                        HeightRequest="35"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+
+                        <Button 
+                        Margin="10, 0, 10, 15"
+                        Text="Камера"
+                        FontSize="12"
+                        TextColor="White"
+                        Command="{Binding OpenCamera}"
+                        BackgroundColor="{StaticResource Accent}"
+                        CornerRadius="25"
+                        WidthRequest="350"
+                        HeightRequest="35"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+
+                    </StackLayout>
+
+                    <Border.Shadow>
+                        <Shadow 
+                        Opacity="0.65"
+                        Brush="Black"
+                        Offset="0, 0"
+                        Radius="20"/>
+                    </Border.Shadow>
+
+                </Border>
+
+                <Button 
+                Margin="10, 15, 10, 15"
+                Text="{Binding Aim}"
+                FontSize="15"
+                BackgroundColor="{StaticResource Primary}"
+                Command="{Binding ExecuteTechnique}"
+                CornerRadius="25"
+                WidthRequest="375"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HeightRequest="40"/>
+
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

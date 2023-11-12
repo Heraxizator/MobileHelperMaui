@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileHelperMaui.Views.PhysicsPages.PhysicsSerchPage"
+             xmlns:vm="clr-namespace:MobileHelper.ViewModels.PhysicsViewModels"
+             Title="Психосоматик">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <vm:PhysicsSearchViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView Margin="0, 0, 0, 0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+            <StackLayout Margin="0">
+
+                <StackLayout Margin="0">
+
+                    <Frame Margin="15, 15, 15, 15" Padding="10" BorderColor="{StaticResource Accent}" CornerRadius="25">
+                        <StackLayout>
+                            <Label TextColor="{AppThemeBinding Light=black, Dark=white}" Padding="0" Text="Проблема" FontSize="15"/>
+                            <Entry
+                        PlaceholderColor="{StaticResource Accent}"
+                        Placeholder="Болезнь"
+                        FontSize="15"
+                        Text="{Binding Name}"
+                        TextColor="{AppThemeBinding Light=black, Dark=white}"
+                            TextChanged="LocalEntry_TextChanged"
+                        VerticalTextAlignment="Center"/>
+                        </StackLayout>
+
+                    </Frame>
+
+                </StackLayout>
+
+                <ListView
+                x:Name="Reasons"
+                Margin="10, 0, 10, 0"
+                HasUnevenRows="True"
+                SeparatorVisibility="None"
+                SelectionMode="None"
+                ItemsSource="{Binding Results}"
+                VerticalScrollBarVisibility="Never"
+                HorizontalScrollBarVisibility="Never">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Border Padding="10">
+                                        <StackLayout>
+                                            <Label 
+                                           Text="{Binding Header}"
+                                           Margin="5, 0, 0, 0"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=black, Dark=white}"
+                                           Padding="0"
+                                           HorizontalOptions="Start" />
+
+                                            <Label 
+                                            Margin="5, 0, 5, 10"
+                                            FontSize="14"
+                                            TextColor="{AppThemeBinding Light=gray, Dark=white}"
+                                            Text="{Binding Describtion}"/>
+                                        </StackLayout>
+
+                                        <Border.Shadow>
+                                            <Shadow 
+                                            Opacity="0.65"
+                                            Brush="Black"
+                                            Offset="0, 0"
+                                            Radius="20"/>
+                                        </Border.Shadow>
+                                    </Border>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
