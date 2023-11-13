@@ -32,7 +32,7 @@ namespace MobileHelper.ViewModels.TechniqueViewModels
 
             SetObservers();
 
-            _ = QuotsHandler.InitQuotsAsync(5);
+            _ = QuotsHandler.InitQuotsAsync(1);
         }
 
         public TechniquesViewModel()

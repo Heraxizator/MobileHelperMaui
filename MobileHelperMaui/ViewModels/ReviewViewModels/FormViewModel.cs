@@ -31,8 +31,8 @@ namespace MobileHelper.ViewModels.ReviewViewModels
         {
             try
             {
-                //SmsMessage message = new SmsMessage(messageText, new[] { recipient });
-                //await Xamarin.Essentials.Sms.ComposeAsync(message);
+                SmsMessage message = new(messageText, new[] { recipient });
+                await Sms.Default.ComposeAsync(message);
             }
             catch (FeatureNotSupportedException)
             {
