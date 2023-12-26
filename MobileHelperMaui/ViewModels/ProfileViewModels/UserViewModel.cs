@@ -1,7 +1,7 @@
-﻿using MobileHelper.Helpers;
-using MobileHelper.Models.Items;
+﻿using MobileHelper.Models.Items;
 using MobileHelper.Models.Tables;
-using MobileHelperMaui.Services.DataBase;
+using MobileHelperMaui.Helpers;
+using MobileHelperMaui.Services;
 using MobileHelperMaui.Services.DataStores;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,12 +24,12 @@ namespace MobileHelper.ViewModels.ProfileViewModels
 
             this.Quots = new ObservableCollection<Quots>();
 
-            Init();
+            InitAsync();
         }
 
         public UserViewModel() { }
 
-        public void Init()
+        public async void InitAsync()
         {
             IEnumerable<TechniqueItem> source = TechniquesDataStore.GetStaticTechniques(this.Navigation);
 
@@ -40,11 +40,11 @@ namespace MobileHelper.ViewModels.ProfileViewModels
                 this.Techniques.Add(technique);
             }
 
-            IList<Models.Tables.QuotDB> itemsDB = DBRepository.GetQuots();
+            IList<Models.Tables.QuotDB> itemsDB = await DBRepository.GetQuots();
 
             IList<Quots> items = QuotsHandler.ParseQuots(itemsDB);
 
-            IEnumerable<Quots> qouts = ShareDataStore<Quots>.SelectRandomItems(items, 3);
+            IEnumerable<Quots> qouts = items; //ShareDataStore<Quots>.SelectRandomItems(items, 3);
 
             foreach (Quots quot in qouts)
             {

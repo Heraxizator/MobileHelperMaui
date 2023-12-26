@@ -1,5 +1,5 @@
 ﻿using MobileHelper.Models.Tables;
-using MobileHelperMaui.Services.DataBase;
+using MobileHelperMaui.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,14 +39,14 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
 
             this.OpenGallery = new Command(ToOpenGallery);
 
-            Init();
+            InitAsync();
         }
 
-        private void Init()
+        private async void InitAsync()
         {
             if (this.currentId != -1)
             {
-                TechniqueDB current_item = DBRepository.GetTechniqueById(this.currentId);
+                TechniqueDB current_item = await DBRepository.GetTechniqueById(this.currentId);
 
                 this.Aim = "Изменить";
 
@@ -166,12 +166,12 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
                 this.Navigation.PopToRootAsync(false);
             }
         }
-        private void ToAddTechnique(object obj)
+        private async void ToAddTechnique(object obj)
         {
             if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.Description) && !string.IsNullOrEmpty(this.Theme)
                 && !string.IsNullOrEmpty(this.Author) && !string.IsNullOrEmpty(this.Algorithm))
             {
-                int count = DBRepository.CountTechniques();
+                int count = await DBRepository.CountTechniques();
 
                 TechniqueDB technique = new TechniqueDB
                 {

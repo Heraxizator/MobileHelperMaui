@@ -1,21 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MobileHelper.Models.Tables;
-using System;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using MobileHelperMaui.Domain.Abstractions;
+using MobileHelperMaui.Domain.Entities;
 
-namespace MobileHelperMaui.Services.DataBase
+namespace MobileHelperMaui.Infrastructure.Share
 {
-    public class SQLiteDB : DbContext
+    public sealed class ApplicationDbContext : DbContext, IUnitOfWork
     {
-        #region Tables
-        public DbSet<TechniqueDB> Techniques { get; set; }
-        public DbSet<QuotDB> Quots { get; set; }
+        private readonly string DbPath;
+        public DbSet<Quot> Quots { get; set; }
+        public DbSet<Technique> Techniques { get; set; }
 
-        #endregion
-
-        public string DbPath { get; }
-
-        public SQLiteDB()
+        public ApplicationDbContext()
         {
             Environment.SpecialFolder folder = Environment.SpecialFolder.LocalApplicationData;
             string path = Environment.GetFolderPath(folder);

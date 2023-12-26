@@ -1,94 +1,39 @@
 ﻿using MobileHelper.Models.Items;
 using MobileHelper.Models.Tables;
-using MobileHelperMaui.Services.DataBase;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
+using MobileHelperMaui.Application.Handlers;
+using MobileHelperMaui.Domain.Abstractions.Mappers;
+using MobileHelperMaui.Domain.Abstractions.Services;
+using MobileHelperMaui.Domain.Entities;
+using MobileHelperMaui.Services;
 using System.Text.Json;
-using System.Threading.Tasks;
 
-namespace MobileHelper.Helpers
+namespace MobileHelperMaui.Helpers
 {
     public static class QuotsHandler
     {
-        private static readonly string api_url = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=ru&format=json";
-
         public static async Task<Quots> GetQuot()
         {
-            try
-            {
-                HttpClient httpClient = new HttpClient();
+            IHandler<Quot> handler = new QuotHandler();
 
-                HttpResponseMessage response = await httpClient.GetAsync(api_url);
+            Quot quot = await handler.Handle();
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    return null;
-                }
-
-                string json = await response.Content.ReadAsStringAsync();
-
-                QuotItem item = JsonSerializer.Deserialize<QuotItem>(json);
-
-                Quots quot = new Quots
-                {
-                    Text = item.quoteText,
-                    Author = !string.IsNullOrEmpty(item.quoteAuthor)
-                    ? item.quoteAuthor : "Народная мудрость"
-                };
-
-                return quot;
-            }
-
-            catch (IOException ioe)
-            {
-                Console.WriteLine(ioe.Message);
-                return null;
-            }
-
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
-        }
-
-        public static async Task<IList<Quots>> GetQuots(int count)
-        {
-            IList<Quots> quots = new List<Quots>();
-
-            for (int i = 0; i < count; i++)
-            {
-                Quots quot = await GetQuot();
-
-                if (quot == null)
-                {
-                    continue;
-                }
-
-                quots.Add(quot);
-            }
+            Quots quots = AbstractMapper<Quot, Quots>.MapperA.Map<Quots>(quot);
 
             return quots;
         }
 
-        public static bool SaveQuots(IList<Quots> quots)
+        public static async Task<bool> SaveQuot(Quots quot)
         {
-            IList<QuotDB> list = new List<QuotDB>();
+            int count = (await DBRepository.GetQuots()).Count;
 
-            foreach (Quots quot in quots)
+            QuotDB quotDB = new()
             {
-                QuotDB quotDB = new QuotDB
-                {
-                    Author = quot.Author,
-                    Text = quot.Text
-                };
+                Id = count + 1,
+                Author = quot.Author,
+                Text = quot.Text
+            };
 
-                list.Add(quotDB);
-            }
-
-            bool result = DBRepository.AddQuots(list);
+            bool result = DBRepository.AddQuot(quotDB);
 
             return result;
         }
@@ -97,9 +42,9 @@ namespace MobileHelper.Helpers
         {
             IList<Quots> quots = new List<Quots>();
 
-            foreach (QuotDB quotDB  in list)
+            foreach (QuotDB quotDB in list)
             {
-                Quots quot = new Quots
+                Quots quot = new()
                 {
                     Author = quotDB.Author,
                     Text = quotDB.Text
@@ -111,11 +56,11 @@ namespace MobileHelper.Helpers
             return quots;
         }
 
-        public static async Task InitQuotsAsync(int count)
+        public static async Task InitQuotsAsync()
         {
-            IList<Quots> elems = await GetQuots(count);
+            Quots elem = await GetQuot();
 
-            _ = SaveQuots(elems);
+            _ = SaveQuot(elem);
         }
 
         public class QuotItem

@@ -1,4 +1,4 @@
-﻿using MobileHelper.Services;
+﻿using MobileHelperMaui.Services.Implementations;
 using MobileHelperMaui.Services.Interfaces;
 using MobileHelperMaui.Views.TechniquePages;
 using System;

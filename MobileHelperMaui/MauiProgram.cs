@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using MobileHelperMaui.Application;
+using MobileHelperMaui.Infrastructure;
 
 namespace MobileHelperMaui
 {
@@ -25,6 +27,10 @@ namespace MobileHelperMaui
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
+
+            builder.Services
+                .AddApplication()
+                .AddInfrastructure();
 
             return builder.Build();
         }

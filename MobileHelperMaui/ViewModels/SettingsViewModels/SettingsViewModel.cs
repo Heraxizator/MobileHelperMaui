@@ -1,4 +1,4 @@
-﻿using MobileHelper.Services;
+﻿using MobileHelperMaui.Services.Implementations;
 
 namespace MobileHelper.ViewModels.SettingsViewModels
 {

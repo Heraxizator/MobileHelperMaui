@@ -1,7 +1,7 @@
 ﻿using MobileHelper.Models.DataItems;
 using MobileHelper.Models.Items.Items;
 using MobileHelper.Models.Tables;
-using MobileHelperMaui.Services.DataBase;
+using MobileHelperMaui.Services;
 using MobileHelperMaui.Views.TechniquePages.ConstructorPages;
 using System;
 using System.Collections.Generic;
@@ -40,7 +40,7 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
 
             this.currentId = id;
 
-            Init();
+            InitAsync();
         }
 
         private async void ToEdit(object obj)
@@ -59,7 +59,7 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
 
             if (result)
             {
-                TechniqueDB item = DBRepository.GetTechniqueById(this.currentId);
+                TechniqueDB item = await DBRepository.GetTechniqueById(this.currentId);
 
                 DBRepository.RemoveTechnique(item);
 
@@ -69,9 +69,9 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
             }
         }
 
-        private void Init()
+        private async void InitAsync()
         {
-            TechniqueDB item = DBRepository.GetTechniqueById(this.currentId);
+            TechniqueDB item = await DBRepository.GetTechniqueById(this.currentId);
 
             if (item == null)
             {

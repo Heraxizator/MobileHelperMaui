@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileHelperMaui", "MobileHelperMaui\MobileHelperMaui.csproj", "{D098B77E-0E1C-48B7-9D71-4666A44E04A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileHelperMaui.Presentation", "MobileHelperMaui\MobileHelperMaui.Presentation.csproj", "{D098B77E-0E1C-48B7-9D71-4666A44E04A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileHelperMaui.Domain", "MobileHelperMaui.Domain\MobileHelperMaui.Domain.csproj", "{6EC1253E-5260-47BE-B294-5459B86366D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileHelperMaui.Application", "MobileHelperMaui.Application\MobileHelperMaui.Application.csproj", "{762C788E-D748-4560-B882-8679B6FEF8C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileHelperMaui.Infrastructure", "MobileHelperMaui.Infrastructure\MobileHelperMaui.Infrastructure.csproj", "{F4C6AAD7-C5A6-45A0-9BA7-1040D9848FFC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileHelperMaui.UnitTests", "MobileHelperMaui.UnitTests\MobileHelperMaui.UnitTests.csproj", "{36C6C52D-D037-4131-AA74-87216FC3C84A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +25,22 @@ Global
 		{D098B77E-0E1C-48B7-9D71-4666A44E04A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D098B77E-0E1C-48B7-9D71-4666A44E04A4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D098B77E-0E1C-48B7-9D71-4666A44E04A4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6EC1253E-5260-47BE-B294-5459B86366D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC1253E-5260-47BE-B294-5459B86366D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC1253E-5260-47BE-B294-5459B86366D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC1253E-5260-47BE-B294-5459B86366D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762C788E-D748-4560-B882-8679B6FEF8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762C788E-D748-4560-B882-8679B6FEF8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762C788E-D748-4560-B882-8679B6FEF8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762C788E-D748-4560-B882-8679B6FEF8C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C6AAD7-C5A6-45A0-9BA7-1040D9848FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C6AAD7-C5A6-45A0-9BA7-1040D9848FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C6AAD7-C5A6-45A0-9BA7-1040D9848FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C6AAD7-C5A6-45A0-9BA7-1040D9848FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36C6C52D-D037-4131-AA74-87216FC3C84A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C6C52D-D037-4131-AA74-87216FC3C84A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C6C52D-D037-4131-AA74-87216FC3C84A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C6C52D-D037-4131-AA74-87216FC3C84A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

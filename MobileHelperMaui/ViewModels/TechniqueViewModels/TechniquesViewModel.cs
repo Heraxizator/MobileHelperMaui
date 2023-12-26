@@ -1,8 +1,8 @@
-﻿using MobileHelper.Helpers;
-using MobileHelper.Models.Items;
+﻿using MobileHelper.Models.Items;
 using MobileHelper.Models.Tables;
 using MobileHelper.ViewModels.ConstructorViewModels;
-using MobileHelperMaui.Services.DataBase;
+using MobileHelperMaui.Helpers;
+using MobileHelperMaui.Services;
 using MobileHelperMaui.Services.DataStores;
 using MobileHelperMaui.Views.TechniquePages.ConstructorPages;
 using System.Collections.Generic;
@@ -26,13 +26,11 @@ namespace MobileHelper.ViewModels.TechniqueViewModels
 
             this.ConstructorTapped = new Command((object obj) => this.Navigation.PushAsync(new DesignerPage(-1), false));
 
-            DBHelper.Init();
-
-            InitSync();
+            InitAsync();
 
             SetObservers();
 
-            _ = QuotsHandler.InitQuotsAsync(1);
+            QuotsHandler.InitQuotsAsync();
         }
 
         public TechniquesViewModel()
@@ -40,7 +38,7 @@ namespace MobileHelper.ViewModels.TechniqueViewModels
 
         }
 
-        public void InitSync()
+        public async void InitAsync()
         {
             IEnumerable<TechniqueItem> source = TechniquesDataStore.GetStaticTechniques(this.Navigation);
 
@@ -49,7 +47,7 @@ namespace MobileHelper.ViewModels.TechniqueViewModels
                 this.Techniques.Add(item);
             }
 
-            IList<TechniqueDB> list = DBRepository.GetTechniques();
+            IList<TechniqueDB> list = await DBRepository.GetTechniques();
 
             foreach (TechniqueDB item in list)
             {
@@ -65,14 +63,14 @@ namespace MobileHelper.ViewModels.TechniqueViewModels
             {
                 this.Techniques.Clear();
 
-                InitSync();
+                InitAsync();
             });
 
             MessagingCenter.Subscribe<object, TechniqueDB>(this, "change", (sender, item) =>
             {
                 this.Techniques.Clear();
 
-                InitSync();
+                InitAsync();
             });
         }
 
