@@ -1,12 +1,10 @@
-# 📲 Clean Net MAUI Architecture Application
+# 📲 Мобильный тренажёр подсознания
 
-This application is developed with Net 7, Net Maui and Entity Framework.
+Приложение разработано на Net 7, Net MAUI и Entity Framework.
 
-It includes patterns such as Strategy, Abstract Factory, Mapper, Repository, Unit Of Work, Separated Interface, Layer Supertype, Value Object.
+В нём применяются такие паттерны, как Strategy, Abstract Factory, Mapper, Repository, Unit Of Work, Separated Interface, Layer Supertype, Value Object, а также такие принципы, как SOLID, DRY, YAGN, KISS, GRASP.
 
-It also contains SOLID, DRY, YAGN, KISS, GRASP.
+### Кликните, чтобы посмотреть подробности [[[Project's Wiki](https://github.com/xtenzQ/WPF-MVVM-EFC-Example/wiki)!](https://www.figma.com/file/fH2NhDIBo93bUhsvVdzDLq/Mobile-Helper?type=design&node-id=0-1&mode=design&t=64mrBPywfwR8vst0-0)](https://clck.ru/37HzYu)
 
-### For the detailed description, please check [[Project's Wiki](https://github.com/xtenzQ/WPF-MVVM-EFC-Example/wiki)!](https://www.figma.com/file/fH2NhDIBo93bUhsvVdzDLq/Mobile-Helper?type=design&node-id=0-1&mode=design&t=64mrBPywfwR8vst0-0)
-
-- If you found my project helpful for you, please 🌟 star it!
-- If you encountered some problems or found a bug, please open ⚠️ issue!
+- Если вам понравился мой проект, поддержите 🌟 или поделитесь идеями!
+- Если вы столкнулись с проблемами или обнаружили баг, пожалуйста, воспользуйтесь разделом ⚠️ issue!
