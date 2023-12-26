@@ -1,7 +1,5 @@
 # 📲 Clean Net MAUI Architecture Application
 
-![Main Window](https://i.imgur.com/ygESUiM.jpg)
-
 This application is developed with Net 7, Net Maui and Entity Framework.
 
 It includes patterns such as Strategy, Abstract Factory, Mapper, Repository, Unit Of Work, Separated Interface, Layer Supertype, Value Object.
