@@ -59,9 +59,9 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
 
             if (result)
             {
-                TechniqueDB item = await DBRepository.GetTechniqueById(this.currentId);
+                TechniqueDB item = await Manager.GetTechniqueById(this.currentId);
 
-                DBRepository.RemoveTechnique(item);
+                Manager.RemoveTechnique(item);
 
                 MessagingCenter.Send<object, TechniqueDB>(this, "remove", item);
 
@@ -71,7 +71,7 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
 
         private async void InitAsync()
         {
-            TechniqueDB item = await DBRepository.GetTechniqueById(this.currentId);
+            TechniqueDB item = await Manager.GetTechniqueById(this.currentId);
 
             if (item == null)
             {

@@ -1,7 +1,6 @@
 ﻿using MobileHelper.Models.Items;
 using MobileHelper.Models.Tables;
 using MobileHelper.ViewModels.ConstructorViewModels;
-using MobileHelperMaui.Helpers;
 using MobileHelperMaui.Services;
 using MobileHelperMaui.Services.DataStores;
 using MobileHelperMaui.Views.TechniquePages.ConstructorPages;
@@ -26,11 +25,13 @@ namespace MobileHelper.ViewModels.TechniqueViewModels
 
             this.ConstructorTapped = new Command((object obj) => this.Navigation.PushAsync(new DesignerPage(-1), false));
 
+            Manager manager = new();
+
+            Manager.AddQuot();
+
             InitAsync();
 
             SetObservers();
-
-            QuotsHandler.InitQuotsAsync();
         }
 
         public TechniquesViewModel()
@@ -47,7 +48,7 @@ namespace MobileHelper.ViewModels.TechniqueViewModels
                 this.Techniques.Add(item);
             }
 
-            IList<TechniqueDB> list = await DBRepository.GetTechniques();
+            IList<TechniqueDB> list = await Manager.GetTechniques();
 
             foreach (TechniqueDB item in list)
             {

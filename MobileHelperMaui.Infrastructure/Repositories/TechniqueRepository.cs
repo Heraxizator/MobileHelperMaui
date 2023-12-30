@@ -5,7 +5,7 @@ using MobileHelperMaui.Infrastructure.Share;
 
 namespace MobileHelperMaui.Infrastructure.Repositories
 {
-    public class TechniqueRepository : ITechniqueRepository
+    public class TechniqueRepository : IRepository<Technique>
     {
         private readonly ApplicationDbContext _dbContext;
 

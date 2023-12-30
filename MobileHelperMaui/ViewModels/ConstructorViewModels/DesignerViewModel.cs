@@ -1,8 +1,5 @@
 ﻿using MobileHelper.Models.Tables;
 using MobileHelperMaui.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Input;
 
 namespace MobileHelper.ViewModels.ConstructorViewModels
@@ -46,7 +43,7 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
         {
             if (this.currentId != -1)
             {
-                TechniqueDB current_item = await DBRepository.GetTechniqueById(this.currentId);
+                TechniqueDB current_item = await Manager.GetTechniqueById(this.currentId);
 
                 this.Aim = "Изменить";
 
@@ -131,9 +128,10 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
             }
         }
 
+        [Obsolete]
         private void ToChangeTechnique(object obj)
         {
-            TechniqueDB item = new TechniqueDB
+            TechniqueDB item = new()
             {
                 Id = this.currentId,
                 Title = this.Name,
@@ -144,7 +142,7 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
                 Image = this.Path
             };
 
-            bool result = DBRepository.UpdateTechnique(item);
+            bool result = Manager.UpdateTechnique(item);
 
             if (!result)
             {
@@ -157,35 +155,39 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
                 {
                     MessagingCenter.Send<object, TechniqueDB>(this, "change", item);
                 }
-                
+
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                 }
 
-                this.Navigation.PopToRootAsync(false);
+                _ = this.Navigation.PopToRootAsync(false);
             }
         }
+
+        [Obsolete]
         private async void ToAddTechnique(object obj)
         {
             if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.Description) && !string.IsNullOrEmpty(this.Theme)
                 && !string.IsNullOrEmpty(this.Author) && !string.IsNullOrEmpty(this.Algorithm))
             {
-                int count = await DBRepository.CountTechniques();
+                int count = await Manager.CountTechniques();
 
-                TechniqueDB technique = new TechniqueDB
-                {
-                    Id = count + 1,
-                    Date = DateTime.Now.ToString().Split(' ').First(),
-                    Title = this.Name,
-                    Subtitle = this.Description,
-                    Theme = this.Theme,
-                    Author = this.Author,
-                    Algorithm = this.Algorithm,
-                    Image = this.Path,
-                };
+                string date = DateTime.Now.ToString().Split(' ').First();
 
-                bool result = DBRepository.AddTechnique(technique);
+                TechniqueBuilder builder = new();
+
+                TechniqueDB technique = builder.SetIdentifier(count + 1)
+                    .SetTitle(this.Name)
+                    .SetSubtitle(this.Description)
+                    .SetTheme(this.Theme)
+                    .SetImage(this.Path)
+                    .SetAuthor(this.Author)
+                    .SetAlgorithm(this.Algorithm)
+                    .SetDate(date)
+                    .Build();
+
+                bool result = Manager.AddTechnique(technique);
 
                 if (!result)
                 {
@@ -205,6 +207,80 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
                 this.DialogService.ShowAsync("Ошибка", "Необходимо заполнить все поля");
             }
         }
+
+        #region Fluent Builder
+        public class TechniqueBuilder
+        {
+            private readonly TechniqueDB techniqueDB;
+
+            public TechniqueBuilder()
+            {
+                this.techniqueDB = new TechniqueDB();
+            }
+
+            public TechniqueBuilder SetIdentifier(int identifier)
+            {
+                this.techniqueDB.Id = identifier;
+                return this;
+            }
+
+            public TechniqueBuilder SetDate(string date)
+            {
+                this.techniqueDB.Date = date;
+                return this;
+            }
+            public TechniqueBuilder SetTitle(string title)
+            {
+                this.techniqueDB.Title = title;
+                return this;
+            }
+            public TechniqueBuilder SetSubtitle(string subtitle)
+            {
+                this.techniqueDB.Subtitle = subtitle;
+                return this;
+            }
+
+            public TechniqueBuilder SetTheme(string theme)
+            {
+                this.techniqueDB.Theme = theme;
+                return this;
+            }
+
+            public TechniqueBuilder SetAuthor(string author)
+            {
+                this.techniqueDB.Author = author;
+                return this;
+            }
+
+            public TechniqueBuilder SetAlgorithm(string algorithm)
+            {
+                this.techniqueDB.Algorithm = algorithm;
+                return this;
+            }
+
+            public TechniqueBuilder SetImage(string image)
+            {
+                this.techniqueDB.Image = image;
+                return this;
+            }
+
+            public TechniqueBuilder IsVisible
+            {
+                get
+                {
+                    this.techniqueDB.Removed = false;
+                    return this;
+                }
+            }
+            public TechniqueDB Build()
+            {
+                return this.techniqueDB;
+            }
+        }
+
+        #endregion
+
+        #region Public Properties
 
         public string Name
         {
@@ -296,5 +372,7 @@ namespace MobileHelper.ViewModels.ConstructorViewModels
                 }
             }
         }
+
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
 using MobileHelper.ViewModels.TechniqueViewModels;
+using MobileHelperMaui.ViewModels.TechniqueViewModels;
 using MobileHelperMaui.Views.ProfilePages;
 
 namespace MobileHelperMaui.Views;

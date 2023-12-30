@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileHelperMaui.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace MobileHelperMaui.Domain.Abstractions.Repositories
 {
     public interface IDataRepository
     {
-        IQuotRepository GetQuotRepository();
-        ITechniqueRepository GetTechniqueRepository();
+        IRepository<Quot> GetQuotRepository();
+        IRepository<Technique> GetTechniqueRepository();
     }
 }

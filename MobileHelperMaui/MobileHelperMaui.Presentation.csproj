@@ -61,6 +61,10 @@
 	  <ProjectReference Include="..\MobileHelperMaui.Infrastructure\MobileHelperMaui.Infrastructure.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Helpers\" />
+	</ItemGroup>
+
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionMobileHelperMauiHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>

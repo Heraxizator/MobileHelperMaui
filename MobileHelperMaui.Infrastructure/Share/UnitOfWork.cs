@@ -1,4 +1,4 @@
-﻿using MobileHelperMaui.Domain.Abstractions;
+﻿using MobileHelperMaui.Domain.Abstractions.Database;
 using MobileHelperMaui.Infrastructure.Repositories;
 
 namespace MobileHelperMaui.Infrastructure.Share

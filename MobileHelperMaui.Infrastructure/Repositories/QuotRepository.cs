@@ -5,7 +5,7 @@ using MobileHelperMaui.Infrastructure.Share;
 
 namespace MobileHelperMaui.Infrastructure.Repositories
 {
-    public class QuotRepository : IQuotRepository
+    public class QuotRepository : IRepository<Quot>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -38,6 +38,13 @@ namespace MobileHelperMaui.Infrastructure.Repositories
         public void Insert(Quot quot)
         {
             this._dbContext.Add(quot);
+
+            this._dbContext.SaveChanges();
+        }
+
+        public void Update(Quot item)
+        {
+            this._dbContext.Update(item);
 
             this._dbContext.SaveChanges();
         }

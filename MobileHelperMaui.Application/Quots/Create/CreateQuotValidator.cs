@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using MobileHelperMaui.Application.Specifications;
+﻿using MobileHelperMaui.Application.Specifications;
 using MobileHelperMaui.Domain.Abstractions;
 using MobileHelperMaui.Domain.Entities;
 using System;
@@ -8,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileHelperMaui.Application.Services
+namespace MobileHelperMaui.Application.Quots.CreateQuot
 {
-    public class QuotValidator : Domain.Abstractions.Services.IValidator<Quot>
+    public class CreateQuotValidator : Domain.Abstractions.Services.IValidator<Quot>
     {
         public bool IsValid(Quot value)
         {

@@ -1,6 +1,5 @@
 ﻿using MobileHelper.Models.Items;
 using MobileHelper.Models.Tables;
-using MobileHelperMaui.Helpers;
 using MobileHelperMaui.Services;
 using MobileHelperMaui.Services.DataStores;
 using System.Collections.Generic;
@@ -40,11 +39,11 @@ namespace MobileHelper.ViewModels.ProfileViewModels
                 this.Techniques.Add(technique);
             }
 
-            IList<Models.Tables.QuotDB> itemsDB = await DBRepository.GetQuots();
+            IList<Models.Tables.QuotDB> itemsDB = await Manager.GetQuots();
 
-            IList<Quots> items = QuotsHandler.ParseQuots(itemsDB);
+            IList<Quots> items = Manager.Parse(itemsDB);
 
-            IEnumerable<Quots> qouts = items; //ShareDataStore<Quots>.SelectRandomItems(items, 3);
+            IEnumerable<Quots> qouts = ShareDataStore<Quots>.SelectRandomItems(items, 3);
 
             foreach (Quots quot in qouts)
             {

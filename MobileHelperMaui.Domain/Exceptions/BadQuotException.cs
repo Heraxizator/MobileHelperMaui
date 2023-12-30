@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileHelperMaui.Application.Exceptions
+namespace MobileHelperMaui.Domain.Exceptions
 {
     public class BadQuotException : Exception
     {
