@@ -4,7 +4,7 @@ using MobileHelperMaui.Domain.Abstractions.Services;
 using MobileHelperMaui.Domain.Entities;
 using MobileHelperMaui.Domain.Share;
 
-namespace MobileHelperMaui.Application.Share
+namespace MobileHelperMaui.Application.Share.Command
 {
     public class Command<T, Q> : ICommand<Q>
     {
@@ -19,7 +19,7 @@ namespace MobileHelperMaui.Application.Share
 
         public async Task<Q> Execute()
         {
-            Q result = await this.handler.Handle(this.repository);
+            Q result = await handler.Handle(repository);
 
             return result;
         }

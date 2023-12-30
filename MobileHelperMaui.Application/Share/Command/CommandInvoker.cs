@@ -1,7 +1,7 @@
 ﻿using MobileHelperMaui.Application.Quots.Get;
 using MobileHelperMaui.Domain.Abstractions;
 
-namespace MobileHelperMaui.Application.Share
+namespace MobileHelperMaui.Application.Share.Command
 {
     public class CommandInvoker<Q>
     {
@@ -19,7 +19,7 @@ namespace MobileHelperMaui.Application.Share
 
         public async Task<Q> Run()
         {
-            Q result = await this.command.Execute();
+            Q result = await command.Execute();
 
             return result;
         }

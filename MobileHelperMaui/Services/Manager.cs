@@ -3,7 +3,9 @@ using MobileHelper.Models.Items;
 using MobileHelper.Models.Tables;
 using MobileHelperMaui.Application.Quots.CreateQuot;
 using MobileHelperMaui.Application.Quots.Get;
-using MobileHelperMaui.Application.Share;
+using MobileHelperMaui.Application.Share.Command;
+using MobileHelperMaui.Application.Share.Query;
+using MobileHelperMaui.Application.Share.Result;
 using MobileHelperMaui.Domain.Abstractions.Mappers;
 using MobileHelperMaui.Domain.Abstractions.Repositories;
 using MobileHelperMaui.Domain.Entities;
@@ -41,7 +43,7 @@ namespace MobileHelperMaui.Services
 
         #region Invokers
 
-        private readonly CommandInvoker<bool> createQuotInvoker = new();
+        private readonly CommandInvoker<Result> createQuotInvoker = new();
 
         private readonly QueryInvoker<Quot> getQuotInvoker = new();
 

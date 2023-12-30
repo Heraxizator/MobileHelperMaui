@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace MobileHelperMaui.Application.Quots.Get
 {
-    public class GetQuotQuery : Share.Query<Quot, Quot>
+    public class GetQuotQuery : Share.Query.Query<Quot, Quot>
     {
         public GetQuotQuery(IHandler<Quot, IList<Quot>> handler, IRepository<Quot> repository) : base(handler, repository)
         {

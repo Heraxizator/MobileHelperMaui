@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MobileHelperMaui.Application.Quots.Delete
 {
-    public class DeleteQuotCommand : Share.Command<Quot, bool>
+    public class DeleteQuotCommand : Share.Command.Command<Quot, bool>
     {
         public DeleteQuotCommand(IHandler<Quot, bool> handler, IRepository<Quot> repository) : base(handler, repository)
         {

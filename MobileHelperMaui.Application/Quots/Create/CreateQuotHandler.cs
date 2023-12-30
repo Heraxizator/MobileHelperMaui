@@ -1,4 +1,5 @@
-﻿using MobileHelperMaui.Domain.Abstractions.Database;
+﻿using MobileHelperMaui.Application.Share.Result;
+using MobileHelperMaui.Domain.Abstractions.Database;
 using MobileHelperMaui.Domain.Abstractions.Repositories;
 using MobileHelperMaui.Domain.Abstractions.Services;
 using MobileHelperMaui.Domain.Constants;
@@ -8,9 +9,9 @@ using System.Text.Json;
 
 namespace MobileHelperMaui.Application.Quots.CreateQuot
 {
-    public class CreateQuotHandler : IHandler<Quot, bool>
+    public class CreateQuotHandler : IHandler<Quot, Result>
     {
-        public async Task<bool> Handle(IRepository<Quot> repository)
+        public async Task<Result> Handle(IRepository<Quot> repository)
         {
             HttpClient httpClient = new();
 
@@ -18,7 +19,8 @@ namespace MobileHelperMaui.Application.Quots.CreateQuot
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new QuotLoadException("Can not load Quot object from Api");
+                return Result.Failure(QuotErrors.CanNotLoad);
+                //throw new QuotLoadException("Can not load Quot object from Api");
             }
 
             string json = await response.Content.ReadAsStringAsync();
@@ -42,12 +44,13 @@ namespace MobileHelperMaui.Application.Quots.CreateQuot
 
             if (result is false)
             {
-                throw new BadQuotException("The quot does not satisfies one or more requirements");
+                return Result.Failure(QuotErrors.BadQuot);
+                //throw new BadQuotException("The quot does not satisfies one or more requirements");
             }
 
             repository.Insert(quot);
 
-            return true;
+            return Result.Success();
         }
 
         private class QuotItem

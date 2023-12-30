@@ -1,4 +1,5 @@
 ﻿using MobileHelperMaui.Application.Share;
+using MobileHelperMaui.Application.Share.Result;
 using MobileHelperMaui.Domain.Abstractions;
 using MobileHelperMaui.Domain.Abstractions.Database;
 using MobileHelperMaui.Domain.Abstractions.Repositories;
@@ -12,9 +13,9 @@ using System.Threading.Tasks;
 
 namespace MobileHelperMaui.Application.Quots.CreateQuot
 {
-    public class CreateQuotCommand : Share.Command<Quot, bool>
+    public class CreateQuotCommand : Share.Command.Command<Quot, Result>
     {
-        public CreateQuotCommand(IHandler<Quot, bool> handler, IRepository<Quot> repository) : base(handler, repository)
+        public CreateQuotCommand(IHandler<Quot, Result> handler, IRepository<Quot> repository) : base(handler, repository)
         {
 
         }

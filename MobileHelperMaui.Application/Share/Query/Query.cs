@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileHelperMaui.Application.Share
+namespace MobileHelperMaui.Application.Share.Query
 {
     public class Query<T, Q> : IQuery<Q>
     {
@@ -22,7 +22,7 @@ namespace MobileHelperMaui.Application.Share
 
         public async Task<IList<Q>> Select()
         {
-            IList<Q> result = await this.handler.Handle(this.repository);
+            IList<Q> result = await handler.Handle(repository);
 
             return result;
         }
